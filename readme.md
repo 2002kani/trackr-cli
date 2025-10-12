@@ -1,4 +1,4 @@
-** TODOS before npm publish: **
+**TODOS before npm publish:**
 
     - Refactor code ()
     - Make use of command execution ()
