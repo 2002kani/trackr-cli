@@ -1,0 +1,19 @@
+{
+  "name": "ticketcli",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "bin": "./index.js",
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "chalk": "^5.6.2",
+    "figlet": "^1.9.3",
+    "inquirer": "^12.9.6"
+  }
+}
