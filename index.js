@@ -27,7 +27,7 @@ async function mainMenu() {
       await showTickets();
       break;
     case "Clean menu":
-      await console.clear();
+      console.clear();
       await showHeader();
       break;
     case "End":
