@@ -2,7 +2,7 @@ export const menuChoices = [
   "Create ticket",
   "Show tickets",
   "Clean menu",
-  "End",
+  "Leave",
 ];
 
 export const ticketChoices = {
