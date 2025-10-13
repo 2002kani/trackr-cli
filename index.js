@@ -12,21 +12,19 @@ import { loadTickets, saveTicket } from "./utils/storage.js";
 
 let tickets = loadTickets();
 let ticketPrompt;
-let createMode = false;
+let returnMode = false;
 
-process.stdin.setRawMode(true); // for instant keyboard detection
 process.stdin.setEncoding("utf8");
-process.stdin.resume();
 
 // TODO: refactor that too
 function exit() {
   ticketPrompt.ui.close();
 }
 
-// cancel when esc keydown
+// "data" because of utf8 (maybe change it in future?)
 process.stdin.on("data", (key) => {
-  if (key === "\u001b" && createMode) {
-    createMode = false;
+  if (key === "\u001b" && returnMode) {
+    returnMode = false;
     exit();
     console.clear();
     showHeader();
@@ -67,7 +65,7 @@ async function mainMenu() {
 }
 
 async function createTicket() {
-  createMode = true;
+  returnMode = true;
   console.clear();
 
   console.log(chalk.bgGray("Press 'ESC' to cancel and return to menu.\n"));
@@ -120,12 +118,14 @@ async function createTicket() {
     }
   } finally {
     console.clear();
-    createMode = false;
+    returnMode = false;
     await showHeader();
   }
 }
 
 async function showTickets() {
+  console.log(chalk.bgGray("Press 'ESC' to cancel and return to menu.\n"));
+
   if (tickets.length === 0) {
     console.log("\n No Tickets created yet. \n");
   } else {
