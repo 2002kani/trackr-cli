@@ -27,3 +27,5 @@ export const ticketChoices = {
     },
   ],
 };
+
+export const showMenuActions = ["Edit Mode", "Return to menu"];
