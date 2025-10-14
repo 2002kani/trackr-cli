@@ -31,6 +31,12 @@ process.stdin.on("data", (key) => {
   }
 });
 
+process.on("uncaughtException", (err) => {
+  if (err instanceof Error && err.name === "ExitPromptError") {
+    console.log("👋 until next time!");
+  }
+});
+
 // TODO: refactor that somewhere
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -51,13 +57,16 @@ async function mainMenu() {
       await createTicket();
       break;
     case "Show tickets":
+      console.log(returnMode);
       await showTickets();
+      await showTicketsMenu();
       break;
     case "Clean menu":
       console.clear();
       await showHeader();
       break;
     case "Leave":
+      console.log("👋 until next time!");
       process.exit(0);
   }
 
@@ -123,7 +132,9 @@ async function createTicket() {
   }
 }
 
+// Show Ticket
 async function showTickets() {
+  console.clear();
   console.log(chalk.bgGray("Press 'ESC' to cancel and return to menu.\n"));
 
   if (tickets.length === 0) {
@@ -150,6 +161,36 @@ async function showTickets() {
     };
 
     console.log(table(data, config));
+  }
+}
+
+// ShowTicket Menu
+async function showTicketsMenu() {
+  //refactor that somewhere too
+  const showMenuActions = ["Edit Mode", "Return to menu"];
+
+  const answers = await inquirer.prompt([
+    {
+      type: "list",
+      name: "action",
+      message: "Choose your actions: ",
+      choices: showMenuActions,
+    },
+  ]);
+
+  switch (answers.action) {
+    case "Edit Mode":
+      console.log("EDIT MODE ACTIVE");
+      break;
+    case "Return to menu":
+      // das hier mit console.clear() zu einer function machen und dann IMMER die aufrufen wenn etwas gecleart werden muss dementsprechend müssen die anderen stellen auch verändert werden wo nur console.clear ist
+
+      // UPDATE: schau dir claude doc dazu an, vorgehen: am besten in die readme packen wann was ausgeführt werden soll, also einmal diesen hard reset mit console.clear und process.stdout.write etc.. und einmal nur console.clear
+      process.stdout.write("\x1Bc");
+      console.clear();
+
+      showHeader();
+      return;
   }
 }
 
