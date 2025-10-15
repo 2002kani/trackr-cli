@@ -1,3 +1,5 @@
+import inquirer from "inquirer";
+
 export const menuChoices = [
   "Create ticket",
   "Show tickets",
@@ -28,4 +30,8 @@ export const ticketChoices = {
   ],
 };
 
-export const showMenuActions = ["Edit Mode", "Return to menu"];
+export const showMenuActions = [
+  "Edit Mode",
+  "Return to menu",
+  new inquirer.Separator(),
+];
