@@ -9,6 +9,7 @@ import { showTicketsMenu } from "./actions/showTicketsMenu.js";
 
 import { menuChoices } from "./constants/choices.js";
 import { loadTickets } from "./utils/storage.js";
+import { setPrompt } from "./utils/state.js";
 import { exit } from "./utils/exitPrompt.js";
 import { hardClear } from "./utils/hardClear.js";
 import { setReturnMode, ticketPrompt, returnMode } from "./utils/state.js";
@@ -24,6 +25,11 @@ process.stdin.on("data", (key) => {
     exit(ticketPrompt);
     hardClear();
     showHeader();
+
+    if (process.stdin.isTTY) {
+      process.stdin.setRawMode(false);
+      process.stdin.pause();
+    }
   }
 });
 
@@ -34,7 +40,7 @@ process.on("uncaughtException", (err) => {
 });
 
 async function mainMenu() {
-  const answer = await inquirer.prompt([
+  const prompt = inquirer.prompt([
     {
       type: "list",
       name: "action",
@@ -42,6 +48,10 @@ async function mainMenu() {
       choices: menuChoices,
     },
   ]);
+
+  setPrompt(prompt);
+
+  const answer = await prompt;
 
   switch (answer.action) {
     case "Create ticket":

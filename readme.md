@@ -16,3 +16,6 @@ Feature Idea:
 
 - Create Settings option (in main menu) so people can can customize the cli how they want
   - things to customize: colors, tags (like urgency, cost...)
+
+**Important info:**
+maybe dangerous handling of process.stdin.setRawMode`s througout showTicketMenu & index.js. Maybe learn a bit more about it and watch out

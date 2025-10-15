@@ -13,6 +13,11 @@ export async function createTicket(tickets) {
   setReturnMode(true);
   console.clear();
 
+  if (process.stdin.isTTY) {
+    process.stdin.resume();
+    process.stdin.setRawMode(true);
+  }
+
   console.log(chalk.bgGray("Press 'ESC' to cancel and return to menu.\n"));
 
   try {
