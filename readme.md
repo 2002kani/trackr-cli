@@ -1,4 +1,4 @@
-**TODOS before npm publish:**
+**TODOS before publish:**
 
     - Make use of command execution ()
     - implement local JSON Storage ()
