@@ -59,7 +59,7 @@ async function mainMenu() {
       break;
     case "Show tickets":
       await showTickets(tickets);
-      await showTicketsMenu();
+      await showTicketsMenu(); // entfernen komplett
       break;
     case "Clean menu":
       console.clear();
