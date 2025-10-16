@@ -5,9 +5,7 @@ export async function showHeader() {
   const title = await figlet.text("Tickr", {
     font: "Ansi shadow",
   });
-  const subtitle = chalk.bgCyan(
-    " ✦ Welcome to tickr — Your cli ticket tracker ✦ "
-  );
+  const subtitle = chalk(" ✦ Welcome to tickr — Your cli ticket tracker ✦ ");
 
   console.log("");
   console.log(title);

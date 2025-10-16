@@ -37,7 +37,6 @@ export async function showTicketsMenu() {
         break;
     }
   } catch (err) {
-    console.log(err);
   } finally {
     hardClear();
     setReturnMode(false);

@@ -10,11 +10,11 @@ export async function showTickets(tickets) {
   } else {
     const data = [
       [
-        `${chalk.bgCyan("ID")}`,
-        `${chalk.bgCyan("Title")}`,
-        `${chalk.bgCyan("Cost")}`,
-        `${chalk.bgCyan("Complexity")}`,
-        `${chalk.bgCyan("Urgency")}`,
+        `${chalk.bold("ID")}`,
+        `${chalk.bold("Title")}`,
+        `${chalk.bold("Cost")}`,
+        `${chalk.bold("Complexity")}`,
+        `${chalk.bold("Urgency")}`,
       ],
       ...tickets.map((t) => [
         t.id,
