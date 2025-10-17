@@ -4,7 +4,6 @@ import chalk from "chalk";
 
 import { ticketChoices } from "../constants/choices.js";
 import { saveTicket } from "../utils/storage.js";
-import { showHeader } from "../header.js";
 
 import { sleep } from "../utils/asyncTimeout.js";
 import { setPrompt, setReturnMode } from "../utils/state.js";
@@ -66,9 +65,7 @@ export async function createTicket(tickets) {
     } else {
       throw err;
     }
-  } finally {
-    console.clear();
-    setReturnMode(false);
-    await showHeader();
   }
+  console.clear();
+  setReturnMode(false);
 }

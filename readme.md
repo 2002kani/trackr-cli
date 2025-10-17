@@ -11,11 +11,16 @@
 TODO today:
 
 - Important: Mach eine komplett neue showTickets ansicht, hier mehr infos:
+
   - Mache daraus kein tabel, sondern checkboxen mit allen tickets die du bisher hast. man kann dann die checkboxen wählen ()
+
     - dann brauchst auch kein showTicketsMenu mehr, übernehm da ggf paar logiken wie clear etc
     - dennoch per esc clearbar machen ()
     - die ui dazu clean halten ()
     - gecheckten checkboxen löschbar machen ()
+    - delete prompt table package
+
+    PROBLEM: wenn ich ticket erstelle, schließt danahc terminal
 
 Feature Idea:
 

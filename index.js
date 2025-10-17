@@ -5,7 +5,6 @@ import inquirer from "inquirer";
 import { showHeader } from "./header.js";
 import { createTicket } from "./actions/createTicket.js";
 import { showTickets } from "./actions/showTickets.js";
-import { showTicketsMenu } from "./actions/showTicketsMenu.js";
 
 import { menuChoices } from "./constants/choices.js";
 import { loadTickets } from "./utils/storage.js";
@@ -25,6 +24,7 @@ process.stdin.on("data", (key) => {
     exit(ticketPrompt);
     hardClear();
     showHeader();
+    mainMenu();
 
     if (process.stdin.isTTY) {
       process.stdin.setRawMode(false);
@@ -39,7 +39,7 @@ process.on("uncaughtException", (err) => {
   }
 });
 
-async function mainMenu() {
+export async function mainMenu() {
   const prompt = inquirer.prompt([
     {
       type: "list",
@@ -56,21 +56,22 @@ async function mainMenu() {
   switch (answer.action) {
     case "Create ticket":
       await createTicket(tickets);
+      await showHeader();
+      await mainMenu();
       break;
     case "Show tickets":
       await showTickets(tickets);
-      await showTicketsMenu(); // entfernen komplett
+      // await showTicketsMenu();
       break;
     case "Clean menu":
       console.clear();
       await showHeader();
+      await mainMenu();
       break;
     case "Leave":
       console.log("👋 until next time!");
       process.exit(0);
   }
-
-  await mainMenu();
 }
 
 async function startCli() {
