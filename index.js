@@ -19,7 +19,6 @@ import {
   setIsHandlingEscape,
 } from "./utils/state.js";
 
-let tickets = loadTickets();
 process.stdin.setEncoding("utf8");
 
 function handleEscapeKey(key) {
@@ -68,12 +67,14 @@ export async function mainMenu() {
 
   switch (answer.action) {
     case "Create ticket":
-      await createTicket(tickets);
+      const ticketsToCreate = loadTickets();
+      await createTicket(ticketsToCreate);
       await showHeader();
       await mainMenu();
       break;
     case "Show tickets":
-      await showTickets(tickets);
+      const ticketsToShow = loadTickets();
+      await showTickets(ticketsToShow);
       await showHeader();
       await mainMenu();
       break;

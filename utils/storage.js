@@ -22,17 +22,16 @@ export function saveTicket(ticket) {
   fs.writeFileSync(filePath, JSON.stringify(ticket, null, 2));
 }
 
-export function deleteTicket(id) {
+export function deleteTicket(ids) {
   const tickets = loadTickets();
 
-  const doesExist = tickets.some((t) => t.id == id);
-  if (!doesExist) {
-    console.log(`No Ticket with ID ${id}.`);
-    return;
-  }
+  const idsToDelete = Array.isArray(ids) ? ids : [ids];
 
-  const updatedTickets = tickets.filter((t) => t.id != id);
+  const updatedTickets = tickets.filter((t) => !idsToDelete.includes(t.id));
+
   saveTicket(updatedTickets);
 
-  console.log(`Ticket with ID ${id} has been deleted!`);
+  console.log(
+    `Deleted ${idsToDelete.length} ticket(s): ${idsToDelete.join(", ")}`
+  );
 }
