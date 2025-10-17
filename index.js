@@ -11,31 +11,44 @@ import { loadTickets } from "./utils/storage.js";
 import { setPrompt } from "./utils/state.js";
 import { exit } from "./utils/exitPrompt.js";
 import { hardClear } from "./utils/hardClear.js";
-import { setReturnMode, ticketPrompt, returnMode } from "./utils/state.js";
+import {
+  ticketPrompt,
+  returnMode,
+  cleanupPrompt,
+  isHandlingEscape,
+  setIsHandlingEscape,
+} from "./utils/state.js";
 
 let tickets = loadTickets();
-
 process.stdin.setEncoding("utf8");
 
-// "data" because of utf8 (maybe change it in future?)
-process.stdin.on("data", (key) => {
-  if (key === "\u001b" && returnMode) {
-    setReturnMode(false);
-    exit(ticketPrompt);
-    hardClear();
-    showHeader();
-    mainMenu();
+function handleEscapeKey(key) {
+  if (key === "\u001b" && returnMode && ticketPrompt && !isHandlingEscape) {
+    setIsHandlingEscape(true);
 
-    if (process.stdin.isTTY) {
-      process.stdin.setRawMode(false);
-      process.stdin.pause();
+    try {
+      exit(ticketPrompt);
+    } catch (err) {
+      // ignore
     }
+
+    cleanupPrompt();
+    hardClear();
+
+    (async () => {
+      setIsHandlingEscape(false);
+      await showHeader();
+      await mainMenu();
+    })();
   }
-});
+}
+
+process.stdin.on("data", handleEscapeKey);
 
 process.on("uncaughtException", (err) => {
   if (err instanceof Error && err.name === "ExitPromptError") {
     console.log("👋 until next time!");
+    process.exit(0);
   }
 });
 
@@ -61,7 +74,8 @@ export async function mainMenu() {
       break;
     case "Show tickets":
       await showTickets(tickets);
-      // await showTicketsMenu();
+      await showHeader();
+      await mainMenu();
       break;
     case "Clean menu":
       console.clear();

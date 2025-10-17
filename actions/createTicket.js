@@ -6,14 +6,13 @@ import { ticketChoices } from "../constants/choices.js";
 import { saveTicket } from "../utils/storage.js";
 
 import { sleep } from "../utils/asyncTimeout.js";
-import { setPrompt, setReturnMode } from "../utils/state.js";
+import { fullCleanup, setPrompt, setReturnMode } from "../utils/state.js";
 
 export async function createTicket(tickets) {
   setReturnMode(true);
   console.clear();
 
   if (process.stdin.isTTY) {
-    process.stdin.resume();
     process.stdin.setRawMode(true);
   }
 
@@ -65,7 +64,8 @@ export async function createTicket(tickets) {
     } else {
       throw err;
     }
+  } finally {
+    fullCleanup();
+    console.clear();
   }
-  console.clear();
-  setReturnMode(false);
 }
