@@ -7,7 +7,6 @@
 
 TODO:
 
-- Make checkboxes deleteable ()
 - think of using sqllite to save data? ()
 
 Feature Idea:
