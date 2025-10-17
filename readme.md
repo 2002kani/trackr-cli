@@ -1,13 +1,14 @@
 **TODOS before publish:**
 
-    - implement local JSON Storage ()
-    - edit user friendly readme ()
     - make showtable page selectable, editable and removeable ()
     - let users create different projects -> able to create tickets for the specific project (therefore refactor the cli menu) ()
 
     - Publish
 
-TODO today:
+TODO:
+
+- Make checkboxes deleteable ()
+- think of using sqllite to save data? ()
 
 Feature Idea:
 

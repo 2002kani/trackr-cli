@@ -9,7 +9,7 @@ import { sleep } from "../utils/asyncTimeout.js";
 import { fullCleanup, setPrompt, setReturnMode } from "../utils/state.js";
 
 export async function createTicket(tickets) {
-  setReturnMode(true);
+  // setReturnMode(true); Comment out, because it leads to bugs. FIX THAT!
   console.clear();
 
   if (process.stdin.isTTY) {
