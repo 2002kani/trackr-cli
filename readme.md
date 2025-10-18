@@ -29,14 +29,14 @@ Clone this repository
 
 Install dependencies
 ```bash
-   npm install
+npm install
 ```
 
 Create a "tickets.json" file in root
 
 Start the cli
 ```bash
-   node .
+node .
 ```
 
 ## Feedback & Contributions
