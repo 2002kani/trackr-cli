@@ -25,6 +25,7 @@ Clone this repository
   ```bash
    git clone https://github.com/2002kani/trackr-cli.git
    cd ticket-cli
+  ```
 
 Install dependencies
 ```bash
