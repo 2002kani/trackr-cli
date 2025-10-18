@@ -1,15 +1,7 @@
-**TODOS before publish:**
+# track cli
+<img width="438" height="415" alt="Bildschirmfoto 2025-10-18 um 13 47 28" src="https://github.com/user-attachments/assets/141b796f-109f-4108-b4f1-4e8b16f85d1e" />
+An interactive CLI to create, delete and manage your project tickets directly in the terminal.
 
-    - make showtable page selectable, editable and removeable ()
-    - let users create different projects -> able to create tickets for the specific project (therefore refactor the cli menu) ()
+## Features
 
-    - Publish
-
-TODO:
-
-- think of using sqllite to save data? ()
-
-Feature Idea:
-
-- Create Settings option (in main menu) so people can can customize the cli how they want
-  - things to customize: colors, tags (like urgency, cost...)
+### Create a Ticket
