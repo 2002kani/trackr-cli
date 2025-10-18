@@ -22,5 +22,20 @@ Tickets are stored in a local JSON file for persistent access between sessions. 
 ## Installation & Start
 Clone this repository
   ```bash
-   git clone https://github.com/<dein-name>/ticket-cli.git
+   git clone https://github.com/2002kani/trackr-cli.git
    cd ticket-cli
+
+Install dependencies
+```bash
+   npm install
+
+Create a "tickets.json" file in root
+
+Start the cli
+```bash
+   node .
+
+## Feedback & Contributions
+
+Feedback, suggestions, and contributions are very welcome!  
+If you find a bug or have an idea for improvement, feel free to open an issue or submit a pull request.
