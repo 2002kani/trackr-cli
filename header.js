@@ -2,7 +2,7 @@ import figlet from "figlet";
 import chalk from "chalk";
 
 export async function showHeader() {
-  const title = await figlet.text("Tickr", {
+  const title = await figlet.text("Trackr", {
     font: "Ansi shadow",
   });
   const subtitle = chalk(" ✦ Welcome to tickr — Your cli ticket tracker ✦ ");

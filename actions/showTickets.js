@@ -1,9 +1,9 @@
 import chalk from "chalk";
 import inquirer from "inquirer";
 import { setPrompt, setReturnMode } from "../utils/state.js";
-import { showHeader } from "../header.js";
+
 import { mainMenu } from "../index.js";
-import { deleteTicket, loadTickets } from "../utils/storage.js";
+import { deleteTicket } from "../utils/storage.js";
 
 const truncateStr = (str, maxLength) => {
   if (!str) return "";
