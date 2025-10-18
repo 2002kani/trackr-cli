@@ -1,37 +1,9 @@
 [
   {
-    "title": "first ticket",
+    "title": "Test ",
     "cost": "M",
     "complexity": "M",
     "urgency": "Medium",
     "id": 1
-  },
-  {
-    "title": "Correct header",
-    "cost": "M",
-    "complexity": "S",
-    "urgency": "Low",
-    "id": 2
-  },
-  {
-    "title": "Implement new exit function",
-    "cost": "0",
-    "complexity": "XS",
-    "urgency": "High",
-    "id": 3
-  },
-  {
-    "title": "refactor database design",
-    "cost": "L",
-    "complexity": "L",
-    "urgency": "Medium",
-    "id": 4
-  },
-  {
-    "title": "Test",
-    "cost": "M",
-    "complexity": "L",
-    "urgency": "High",
-    "id": 5
   }
 ]
