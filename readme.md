@@ -32,8 +32,6 @@ Install dependencies
 npm install
 ```
 
-Create a "tickets.json" file in root
-
 Start the cli
 ```bash
 node .
